@@ -1,0 +1,17 @@
+.circularProgressBar {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transform: rotate(-90deg);
+}
+
+.circleBackground {
+  stroke: #ddd;
+}
+
+.circleProgress {
+  stroke: #4caf50;
+  transition: stroke-dashoffset 1s linear;
+}
