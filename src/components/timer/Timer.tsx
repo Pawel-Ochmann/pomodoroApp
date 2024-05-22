@@ -1,41 +1,13 @@
-import { useState, useEffect } from 'react';
 import { formatTime } from '../../utils/timeFormatHadler';
 import styles from './timer.module.css';
+import { useTimer } from '../../hooks/useTimer';
 
 interface Props {
-  initialTime: number;
   isRunning: boolean;
 }
 
-const Timer = ({ initialTime, isRunning }: Props) => {
-  const [remainingTime, setRemainingTime] = useState(initialTime);
-  const [intervalId, setIntervalId] = useState<ReturnType<
-    typeof setTimeout
-  > | null>(null);
-
-  useEffect(() => {
-    let interval: ReturnType<typeof setTimeout> | null = null;
-
-    if (isRunning) {
-      interval = setInterval(() => {
-        setRemainingTime((prevTime) => prevTime - 1);
-      }, 1000);
-    }
-
-    return () => {
-      if (interval) {
-        clearInterval(interval);
-      }
-    };
-  }, [isRunning]);
-
-  useEffect(() => {
-    if (remainingTime === 0 && isRunning) {
-      clearInterval(intervalId!);
-      setIntervalId(null);
-    }
-  }, [remainingTime, isRunning, intervalId]);
-
+const Timer = ({ isRunning }: Props) => {
+  const { initialTime, remainingTime } = useTimer(isRunning);
   const progress = ((initialTime - remainingTime) / initialTime) * 100;
   const dashArray = 283;
   const dashOffset = dashArray - (dashArray * progress) / 100;
