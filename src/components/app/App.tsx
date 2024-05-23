@@ -1,32 +1,50 @@
 import { useState } from 'react';
 import Timer from '../../components/timer/Timer';
-import {useJoke} from '../../hooks/useJoke';
-import Settings from '../../components/settings/Settings'
+import Settings from '../../components/settings/Settings';
 import styles from './app.module.css';
 import classNames from 'classnames';
 
 function App() {
-  const [isRunning, setIsRunning] = useState(false);
-  const {joke, getJoke} = useJoke();
   const [settingsOpen, setSettingsOpen] = useState(false);
-
 
   const classes = {
     container: styles.container,
-    navigation:styles.navigation
+    navigation: styles.navigation,
+    timerButton: classNames(styles.timerButton, {
+      [styles.closed]: settingsOpen,
+    }),
+    settingsButton: classNames(styles.settingsButton, {
+      [styles.closed]: !settingsOpen,
+    }),
   };
-
 
   return (
     <div className={classes.container}>
-      <nav><button>timer</button><button>settings</button></nav>
-      <Settings />
-      <div></div>
- 
-      <Timer isRunning={isRunning}/>
-      <button onClick={()=>{setIsRunning(!isRunning)}}>{isRunning ? 'Pause' : 'Start'}</button>
-      <button onClick={getJoke}>Get Joke</button>
-      <p>{joke}</p>
+      <nav className={classes.navigation}>
+        <button
+        className={classes.timerButton}
+          onClick={() => {
+            setSettingsOpen(false);
+          }}
+        >
+          timer
+        </button>
+        <button
+        className={classes.settingsButton}
+          onClick={() => {
+            setSettingsOpen(true);
+          }}
+        >
+          settings
+        </button>
+      </nav>
+      {settingsOpen ? (
+        <Settings />
+      ) : (
+        <main>
+          <Timer/>
+        </main>
+      )}
     </div>
   );
 }

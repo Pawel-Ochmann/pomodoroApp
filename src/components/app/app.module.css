@@ -1,11 +1,42 @@
 .container {
-    display: flex;
-    flex-direction: column;
-    gap: 2rem;
-    justify-content: center;
-    align-items: center;
-    width: 100dvw;
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  align-items: center;
+  width: 20rem;
+  min-height: 30rem;
+  border: 5px solid black;
+  background: white;
 }
 
 .navigation {
+  display: flex;
+  width: 20rem;
+}
+
+.timerButton,
+.settingsButton {
+  flex: 1;
+  font-size: 2rem;
+  background-color: white;
+  border: none;
+  outline: none;
+}
+
+.timerButton {
+  &.closed {
+    background-color: #ccc;
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    border-bottom-right-radius: 10px;
+  }
+}
+
+.settingsButton {
+  &.closed {
+    background-color: #ccc;
+    border-bottom: 1px solid #000;
+    border-left: 1px solid #000;
+    border-bottom-left-radius: 10px;
+  }
 }

@@ -36,5 +36,11 @@ export const useTimer = (isRunning: boolean) => {
     };
   }, [intervals, isRunning, remainingTime, repetition]);
 
-  return { initialTime, remainingTime };
+  const reset = () => {
+    setRepetition(0);
+    setInitialTime(intervals[0]);
+    setRemainingTime(intervals[0]);
+  };
+
+  return { initialTime, remainingTime, reset, repetition };
 };
