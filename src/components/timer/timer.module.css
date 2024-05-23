@@ -13,5 +13,5 @@
 
 .circleProgress {
   stroke: #4caf50;
-  transition: stroke-dashoffset 1s linear;
+  transition: stroke-dashoffset linear;
 }

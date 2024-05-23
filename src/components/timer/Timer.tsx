@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { formatTime } from '../../utils/timeFormatHadler';
 import styles from './timer.module.css';
 import { useTimer } from '../../hooks/useTimer';
@@ -12,18 +11,6 @@ const Timer = ({ isRunning }: Props) => {
   const progress = ((initialTime - remainingTime) / initialTime) * 100;
   const dashArray = 283;
   const dashOffset = dashArray - (dashArray * progress) / 100;
-  const [transitionStyle, setTransitionStyle] = useState<React.CSSProperties>({
-    transition: 'stroke-dashoffset 1s linear',
-  });
-
-    useEffect(() => {
-      if (remainingTime === 0) {
-        setTransitionStyle({ transition: 'none' });
-        setTimeout(() => {
-          setTransitionStyle({ transition: 'stroke-dashoffset 1s linear' });
-        }, 0);
-      }
-    }, [remainingTime]);
 
   return (
     <>
@@ -48,7 +35,6 @@ const Timer = ({ isRunning }: Props) => {
             strokeWidth='10'
             strokeDasharray={dashArray}
             strokeDashoffset={dashOffset}
-            style={{ ...transitionStyle }}
           />
         </svg>
       </div>
