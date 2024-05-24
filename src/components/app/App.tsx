@@ -22,7 +22,7 @@ function App() {
     <div className={classes.container}>
       <nav className={classes.navigation}>
         <button
-        className={classes.timerButton}
+          className={classes.timerButton}
           onClick={() => {
             setSettingsOpen(false);
           }}
@@ -30,7 +30,7 @@ function App() {
           timer
         </button>
         <button
-        className={classes.settingsButton}
+          className={classes.settingsButton}
           onClick={() => {
             setSettingsOpen(true);
           }}
@@ -38,13 +38,10 @@ function App() {
           settings
         </button>
       </nav>
-      {settingsOpen ? (
-        <Settings />
-      ) : (
-        <main>
-          <Timer/>
-        </main>
-      )}
+      <main className={styles.main} >
+        <Timer />
+        {settingsOpen && <Settings />}
+      </main>
     </div>
   );
 }

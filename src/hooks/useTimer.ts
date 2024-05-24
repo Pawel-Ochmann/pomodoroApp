@@ -20,7 +20,7 @@ export const useTimer = (isRunning: boolean) => {
             setRepetition(0);
           } else {
             setInitialTime(intervals[repetition + 1]);
-            setRemainingTime(intervals[repetition + 1]);
+            setRemainingTime(intervals[repetition + 1] -1);
             setRepetition((prev) => prev + 1);
           }
         } else {

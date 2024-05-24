@@ -6,8 +6,8 @@
 }
 
 .circularProgressBar {
-  width: 150px;
-  height: 150px;
+  width: 200px;
+  height: 200px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -24,7 +24,20 @@
   transition: stroke-dashoffset linear;
 }
 
-.timerText {
+/* .timerText {
   position: absolute;
   transform: rotate(90deg);
+} */
+
+.gif {
+  max-width: 80%;
+  position: absolute;
+  transform: rotate(90deg);
+  z-index: -1;
+  border-radius: 2rem;
+}
+
+.joke {
+  position: fixed;
+  z-index: 1000;
 }

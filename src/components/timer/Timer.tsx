@@ -1,17 +1,63 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { formatTime } from '../../utils/timeFormatHadler';
 import styles from './timer.module.css';
 import { useTimer } from '../../hooks/useTimer';
+import { getJoke } from '../../utils/getJoke';
+
+
 
 const Timer = () => {
+  const [joke, setJoke] = useState<string>('');
   const [isRunning, setIsRunning] = useState(false);
   const { initialTime, remainingTime, reset, repetition } = useTimer(isRunning);
   const progress = ((initialTime - remainingTime) / initialTime) * 100;
   const dashArray = 283;
   const dashOffset = dashArray - (dashArray * progress) / 100;
 
+   
+
+  useEffect(() => {
+    const fetchJoke = async () => {
+      if (repetition % 2 !== 0) {
+        const newJoke = await getJoke();
+        if (newJoke) {
+          setJoke(newJoke);
+        }
+      }
+      else {
+         setJoke('');
+      }
+    };
+
+    fetchJoke();
+  }, [repetition]);
+
+  const resetHandler = () => {
+    const shouldReset = window.confirm(
+      'Are you sure you want to quit the process?'
+    );
+
+    if (shouldReset) {
+      reset();
+      setIsRunning(false);
+      const audio = new Audio('./audio/bonus.mp3');
+      audio.play();
+    }
+  };
+
   return (
     <div className={styles.container}>
+      <dialog className={styles.joke} open={joke !== ''}>
+        <button
+          onClick={() => {
+            setJoke('');
+          }}
+        >
+          X
+        </button>{' '}
+        <p>Time for a break, grab a joke as a reward: </p>
+        {joke}
+      </dialog>
       <div className={styles.circularProgressBar}>
         <svg viewBox='0 0 100 100'>
           <circle
@@ -35,8 +81,15 @@ const Timer = () => {
             strokeDashoffset={dashOffset}
           />
         </svg>
-        <p className={styles.timerText}>{formatTime(remainingTime)}</p>
+        {isRunning && (
+          <img
+            className={styles.gif}
+            src={repetition % 2 === 0 ? 'work.gif' : 'break.gif'}
+            alt=''
+          />
+        )}
       </div>
+      <p className={styles.timerText}>{formatTime(remainingTime)}</p>
       <button
         onClick={() => {
           setIsRunning(!isRunning);
@@ -44,17 +97,7 @@ const Timer = () => {
       >
         {isRunning ? 'Pause' : 'Start'}
       </button>
-      <button
-        onClick={() => {
-          reset();
-          setIsRunning(false);
-        }}
-      >
-        Stop
-      </button>
-      {isRunning && (
-        <img src={repetition % 2 === 0 ? 'work.gif' : 'break.gif'} alt='' />
-      )}
+      <button onClick={resetHandler}>Stop</button>
     </div>
   );
 };
