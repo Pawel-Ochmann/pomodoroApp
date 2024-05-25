@@ -14,13 +14,21 @@ export const useTimer = (isRunning: boolean) => {
       interval = setInterval(() => {
         if (remainingTime === 0) {
           clearInterval(interval!);
+          if (repetition % 2 !== 0) {
+            const audio = new Audio('./audio/workAlert.wav');
+            audio.play();
+          } else {
+            const audio = new Audio('./audio/breakAlert.wav');
+            audio.play();
+          }
+
           if (repetition + 1 >= intervals.length) {
             setInitialTime(intervals[0]);
             setRemainingTime(intervals[0]);
             setRepetition(0);
           } else {
             setInitialTime(intervals[repetition + 1]);
-            setRemainingTime(intervals[repetition + 1] -1);
+            setRemainingTime(intervals[repetition + 1] - 1);
             setRepetition((prev) => prev + 1);
           }
         } else {

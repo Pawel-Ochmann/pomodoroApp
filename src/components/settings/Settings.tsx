@@ -32,6 +32,7 @@ function Settings() {
     newIntervals[newIntervals.length - 1] = longBreak * 60;
     console.log(newIntervals)
     setIntervals(newIntervals);
+    window.location.reload();
   };
 
   const resetHandler = (e: React.MouseEvent<HTMLButtonElement>): void => {
@@ -41,6 +42,7 @@ function Settings() {
     setBreaks(intervals[1] / 60);
     setLongBreak(intervals[intervals.length - 1] / 60);
     setRepetitions(intervals.length / 2);
+    window.location.reload();
   };
 
   return (
@@ -51,7 +53,7 @@ function Settings() {
           <input
             type='range'
             min='1'
-            max='100'
+            max='60'
             value={pomodoro}
             onChange={(e) => {
               changeHandler(e, setPomodoro);
@@ -63,7 +65,7 @@ function Settings() {
           <input
             type='range'
             min='1'
-            max='100'
+            max='60'
             value={breaks}
             onChange={(e) => {
               changeHandler(e, setBreaks);
@@ -75,7 +77,7 @@ function Settings() {
           <input
             type='range'
             min={breaks}
-            max='100'
+            max='60'
             value={longBreak}
             onChange={(e) => {
               changeHandler(e, setLongBreak);

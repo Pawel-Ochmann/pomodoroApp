@@ -1,0 +1,31 @@
+:root {
+  --theme-color: rgb(11, 38, 59);
+  --secondary-theme-color: rgb(11, 17, 32);
+  --main-font-color: rgb(17, 27, 33);
+  --secondary-font-color: rgb(114, 162, 156);
+  --background-color: rgb(223, 229, 231);
+  --box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+}
+
+@font-face {
+  font-family: 'montserrat';
+  src: url('../public//fonts/Montserrat-VariableFont_wght.ttf') format(ttf);
+}
+
+html {
+  font-family: 'montserrat', Arial, sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  margin: 0;
+  background: #0f2027;
+  background: -webkit-linear-gradient(to right, #2c5364, #203a43, #0f2027);
+  background: linear-gradient(to right, #2c5364, #203a43, #0f2027);
+  background-size: 200% 200%;
+  background-position: center;
+}

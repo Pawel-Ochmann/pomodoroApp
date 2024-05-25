@@ -24,12 +24,8 @@
   transition: stroke-dashoffset linear;
 }
 
-/* .timerText {
-  position: absolute;
-  transform: rotate(90deg);
-} */
-
-.gif {
+.gif, .pauseIcon {
+  font-size: 4rem;
   max-width: 80%;
   position: absolute;
   transform: rotate(90deg);

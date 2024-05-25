@@ -3,6 +3,8 @@ import { formatTime } from '../../utils/timeFormatHadler';
 import styles from './timer.module.css';
 import { useTimer } from '../../hooks/useTimer';
 import { getJoke } from '../../utils/getJoke';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faPause } from '@fortawesome/free-solid-svg-icons';
 
 
 
@@ -54,7 +56,7 @@ const Timer = () => {
           }}
         >
           X
-        </button>{' '}
+        </button>
         <p>Time for a break, grab a joke as a reward: </p>
         {joke}
       </dialog>
@@ -88,6 +90,7 @@ const Timer = () => {
             alt=''
           />
         )}
+        {(!isRunning && (remainingTime !== initialTime)) && <FontAwesomeIcon icon={faPause} className={styles.pauseIcon}/>}
       </div>
       <p className={styles.timerText}>{formatTime(remainingTime)}</p>
       <button
