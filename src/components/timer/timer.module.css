@@ -16,12 +16,18 @@
 }
 
 .circleBackground {
-  stroke: #ddd;
+  stroke: var(--theme-color);
 }
 
 .circleProgress {
-  stroke: #4caf50;
+  stroke: rgb(156, 156, 156);
   transition: stroke-dashoffset linear;
+}
+
+.timerText {
+  color: var(--theme-color);
+  font-size: 2.5rem;
+  font-family: 'montserrat';
 }
 
 .gif, .pauseIcon {
@@ -31,6 +37,7 @@
   transform: rotate(90deg);
   z-index: -1;
   border-radius: 2rem;
+  color: var(--theme-color);
 }
 
 .joke {

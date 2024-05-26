@@ -1,44 +1,76 @@
 .container {
+  position: fixed;
+  margin: auto;
+  margin-top: 5rem;
   display: flex;
   flex-direction: column;
   gap: 2rem;
   align-items: center;
   width: 20rem;
   min-height: 30rem;
-  border: 5px solid black;
-  background: white;
+  background: rgba(0, 0, 0, 0.192);
+  border-radius: 2rem;
   position: relative;
+  box-shadow: var(--box-shadow);
 }
 
 .navigation {
   display: flex;
-  width: 20rem;
+  width: 100%;
 }
 
 .timerButton,
 .settingsButton {
+  background-color: rgba(255, 255, 255, 0);
   flex: 1;
   font-size: 2rem;
-  background-color: white;
   border: none;
   outline: none;
+  color: var(--theme-color);
+  font-weight: bold;
+  transition: 0.3s;
+  position: relative;
+  overflow: hidden;
+  cursor: pointer;
+  font-family: 'montserrat';
+}
+
+.timerButton.closed,
+.settingsButton.closed {
+  color: var(--theme-color);
+  background-color: #ffffff4d;
+  color: var(--font-color);
+
+  &::before,
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: var(--theme-color);
+    transition: width 0.3s ease-out;
+    z-index: -1;
+  }
+
+  &:hover::before,
+  &:hover::before {
+    width: 100%;
+  }
 }
 
 .timerButton {
+  border-radius: 2rem 0 0 0;
   &.closed {
-    background-color: #ccc;
-    border-bottom: 1px solid #000;
-    border-right: 1px solid #000;
-    border-bottom-right-radius: 10px;
+    border-bottom-right-radius: 30px;
   }
 }
 
 .settingsButton {
+  border-radius: 0 2rem 0 0;
   &.closed {
-    background-color: #ccc;
-    border-bottom: 1px solid #000;
-    border-left: 1px solid #000;
-    border-bottom-left-radius: 10px;
+    border-bottom-left-radius: 30px;
   }
 }
 

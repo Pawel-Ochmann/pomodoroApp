@@ -92,7 +92,7 @@ const Timer = () => {
         )}
         {(!isRunning && (remainingTime !== initialTime)) && <FontAwesomeIcon icon={faPause} className={styles.pauseIcon}/>}
       </div>
-      <p className={styles.timerText}>{formatTime(remainingTime)}</p>
+      <h1 className={styles.timerText}>{formatTime(remainingTime)}</h1>
       <button
         onClick={() => {
           setIsRunning(!isRunning);

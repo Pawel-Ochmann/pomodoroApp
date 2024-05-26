@@ -1,10 +1,10 @@
 :root {
-  --theme-color: rgb(11, 38, 59);
+  --theme-color: rgb(255,245,227);
   --secondary-theme-color: rgb(11, 17, 32);
-  --main-font-color: rgb(17, 27, 33);
-  --secondary-font-color: rgb(114, 162, 156);
+  --font-color: rgb(32, 39, 43);
+  --secondary-font-color: rgb(8, 59, 53);
   --background-color: rgb(223, 229, 231);
-  --box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+  --box-shadow: 2px 2px 20px 0px rgb(0, 0, 0);
 }
 
 @font-face {
