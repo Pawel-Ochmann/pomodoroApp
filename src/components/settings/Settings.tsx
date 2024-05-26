@@ -8,12 +8,12 @@ function Settings() {
     'intervals',
     defaultIntervals
   );
-  const [pomodoro, setPomodoro] = useState(intervals[0]/60);
-  const [breaks, setBreaks] = useState(intervals[1]/60);
-  const [longBreak, setLongBreak] = useState(intervals[intervals.length - 1]/60);
+  const [pomodoro, setPomodoro] = useState(intervals[0] / 60);
+  const [breaks, setBreaks] = useState(intervals[1] / 60);
+  const [longBreak, setLongBreak] = useState(
+    intervals[intervals.length - 1] / 60
+  );
   const [repetitions, setRepetitions] = useState(intervals.length / 2);
-
-  console.log('repet', intervals);
 
   const changeHandler = (
     e: ChangeEvent<HTMLInputElement>,
@@ -30,7 +30,6 @@ function Settings() {
       newIntervals.push(breaks * 60);
     }
     newIntervals[newIntervals.length - 1] = longBreak * 60;
-    console.log(newIntervals)
     setIntervals(newIntervals);
     window.location.reload();
   };
@@ -49,7 +48,7 @@ function Settings() {
     <div className={styles.container}>
       <form action=''>
         <label htmlFor=''>
-          Work time {pomodoro}:
+          Work time: <span className={styles.number}>{`${pomodoro} min`}</span>
           <input
             type='range'
             min='1'
@@ -61,7 +60,7 @@ function Settings() {
           />
         </label>
         <label htmlFor=''>
-          Break time:{breaks}
+          Break time:<span className={styles.number}>{`${breaks} min`}</span>
           <input
             type='range'
             min='1'
@@ -73,7 +72,8 @@ function Settings() {
           />
         </label>
         <label htmlFor=''>
-          Long break time {longBreak}:
+          Long break time:{' '}
+          <span className={styles.number}>{`${longBreak} min`}</span>
           <input
             type='range'
             min={breaks}
@@ -99,8 +99,10 @@ function Settings() {
           />
           intervals.
         </label>
-        <button onClick={saveHandler}>Save</button>
-        <button onClick={resetHandler}>reset settings</button>
+        <div className={styles.buttonsContainer}>
+          <button onClick={saveHandler}>Save</button>
+          <button onClick={resetHandler}>Reset</button>
+        </div>
       </form>
     </div>
   );

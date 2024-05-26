@@ -2,7 +2,10 @@ import { useState, useEffect } from 'react';
 import { usePersistedState } from '../hooks/usePersistedState';
 
 export const useTimer = (isRunning: boolean) => {
-  const [intervals] = usePersistedState<number[]>('intervals', [5, 3]);
+  const [intervals] = usePersistedState<number[]>(
+    'intervals',
+    [1500, 300, 1500, 300, 1500, 300, 1500, 1800]
+  );
   const [repetition, setRepetition] = useState(0);
   const [initialTime, setInitialTime] = useState(intervals[repetition]);
   const [remainingTime, setRemainingTime] = useState<number>(initialTime);

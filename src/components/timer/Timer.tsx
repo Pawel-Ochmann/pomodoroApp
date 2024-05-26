@@ -58,7 +58,7 @@ const Timer = () => {
           X
         </button>
         <p>Time for a break, grab a joke as a reward: </p>
-        {joke}
+        <p className={styles.jokeContent}>{joke}</p>
       </dialog>
       <div className={styles.circularProgressBar}>
         <svg viewBox='0 0 100 100'>
@@ -93,14 +93,16 @@ const Timer = () => {
         {(!isRunning && (remainingTime !== initialTime)) && <FontAwesomeIcon icon={faPause} className={styles.pauseIcon}/>}
       </div>
       <h1 className={styles.timerText}>{formatTime(remainingTime)}</h1>
-      <button
-        onClick={() => {
-          setIsRunning(!isRunning);
-        }}
-      >
-        {isRunning ? 'Pause' : 'Start'}
-      </button>
-      <button onClick={resetHandler}>Stop</button>
+      <div className={styles.buttonsContainer}>
+        <button
+          onClick={() => {
+            setIsRunning(!isRunning);
+          }}
+        >
+          {isRunning ? 'Pause' : 'Start'}
+        </button>
+        <button onClick={resetHandler}>Stop</button>
+      </div>
     </div>
   );
 };

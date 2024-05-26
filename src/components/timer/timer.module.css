@@ -30,7 +30,8 @@
   font-family: 'montserrat';
 }
 
-.gif, .pauseIcon {
+.gif,
+.pauseIcon {
   font-size: 4rem;
   max-width: 80%;
   position: absolute;
@@ -43,4 +44,70 @@
 .joke {
   position: fixed;
   z-index: 1000;
+  border: none;
+  background-color: var(--font-color);
+  color: var(--theme-color);
+  font-size: 1.5rem;
+  border-radius: 1.5rem;
+  max-width: 80%;
+  box-shadow: var(--box-shadow);
+  & button {
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-left: 95%;
+    cursor: pointer;
+    border: none;
+    outline: none;
+    border-radius: 100rem;
+    padding: 0.2rem 0.5rem;
+    transition: 0.3s;
+    &:hover {
+      box-shadow: 0 0 5px var(--theme-color), 0 0 10px var(--theme-color),
+        0 0 20px var(--theme-color), 0 0 30px var(--theme-color),
+        0 0 40px var(--theme-color);
+    }
+  }
+}
+
+.jokeContent {
+  background-color: rgb(63, 63, 63);
+  padding: 1rem;
+  border-radius: 1rem;
+  margin-top: 1rem;
+}
+
+.buttonsContainer {
+  display: flex;
+  gap: 1rem;
+  & button {
+    color: var(--font-color);
+    font-family: 'montserrat';
+    font-weight: bold;
+    font-size: 2rem;
+    border: none;
+    padding: 0.2rem 0.8rem;
+    border-radius: 0.7rem;
+    background-color: rgba(255, 255, 255, 0.302);
+    position: relative;
+    overflow: hidden;
+    cursor: pointer;
+    min-width: 7rem;
+  }
+
+  & button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 0%;
+    height: 100%;
+    background-color: var(--theme-color);
+    transition: width 0.3s ease-out;
+    z-index: -1;
+  }
+
+  & button:hover::before,
+  & button:hover::before {
+    width: 100%;
+  }
 }

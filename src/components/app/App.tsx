@@ -27,7 +27,7 @@ function App() {
             setSettingsOpen(false);
           }}
         >
-          timer
+          Timer
         </button>
         <button
           className={classes.settingsButton}
@@ -35,7 +35,7 @@ function App() {
             setSettingsOpen(true);
           }}
         >
-          settings
+          Settings
         </button>
       </nav>
       <main className={styles.main} >
